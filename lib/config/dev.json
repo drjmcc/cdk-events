@@ -1,0 +1,16 @@
+{
+  "environment": 1,
+  "awsAccountNumber": "597524826433",
+  "awsRegion": "us-east-1",
+  "outputPrefix": "dev",
+  "redirectsInboundEventProcessor": {
+    "LAMBDA_NAME": "redirects-inbound-events-processor",
+    "RELEASE_VERSION": "releasehash",
+    "ENVIRONMENT_NAME": "Dev"
+  },
+  "redirectsProcessingEventProcessor": {
+    "LAMBDA_NAME": "redirects-processing-events-processor",
+    "RELEASE_VERSION": "releasehash",
+    "ENVIRONMENT_NAME": "Dev"
+  }
+}

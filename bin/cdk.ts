@@ -1,21 +1,46 @@
 #!/usr/bin/env node
-import 'source-map-support/register';
-import * as cdk from 'aws-cdk-lib';
-import { CdkStack } from '../lib/cdk-stack';
+import "source-map-support/register";
+import * as cdk from "aws-cdk-lib";
+import * as config from "../lib/config";
+import { Config } from "../lib/config/config";
+import { RedirectsInboundEventStack } from "../lib/stacks/redirects-inbound-event-stack";
+import { RedirectsProcessingEventStack } from "../lib/stacks/redirects-processing-event-stack";
 
 const app = new cdk.App();
-new CdkStack(app, 'CdkStack', {
-  /* If you don't specify 'env', this stack will be environment-agnostic.
-   * Account/Region-dependent features and context lookups will not work,
-   * but a single synthesized template can be deployed anywhere. */
 
-  /* Uncomment the next line to specialize this stack for the AWS Account
-   * and Region that are implied by the current CLI configuration. */
-  // env: { account: process.env.CDK_DEFAULT_ACCOUNT, region: process.env.CDK_DEFAULT_REGION },
+const createStacks = (config: Config) => {
+  new RedirectsInboundEventStack(
+    app,
+    `${config.outputPrefix}DevRedirectsInboundEventStack`,
+    {
+      env: {
+        region: config.awsRegion,
+        account: config.awsAccountNumber,
+      },
+      tags: {
+        Application: "DadRedirects",
+        Environment: config.outputPrefix,
+      },
+      config: config,
+    }
+  );
 
-  /* Uncomment the next line if you know exactly what Account and Region you
-   * want to deploy the stack to. */
-  // env: { account: '123456789012', region: 'us-east-1' },
+  new RedirectsProcessingEventStack(
+    app,
+    `${config.outputPrefix}DevRedirectsProcessingEventStack`,
+    {
+      env: {
+        region: config.awsRegion,
+        account: config.awsAccountNumber,
+      },
+      tags: {
+        Application: "DadRedirects",
+        Environment: config.outputPrefix,
+      },
+      config: config,
+    }
+  );
+};
 
-  /* For more information, see https://docs.aws.amazon.com/cdk/latest/guide/environments.html */
-});
+createStacks(config.dev);
+app.synth();
