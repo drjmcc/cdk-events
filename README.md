@@ -1,14 +1,24 @@
-# Welcome to your CDK TypeScript project
+# CDK Events
 
-This is a blank project for CDK development with TypeScript.
+This is a sample app TypeScript CDK app that shows how to create and integrate SQS/SNS/Lambda.
+
+## Prerequisites
+Install the CDK CLI:
+
+`npm install -g aws-cdk`
+
+## Build
+
+`npm run build`
+
+## Compare a deployed stack with the current state
+
+`cdk diff`        
+
+##Emit the synthesized CloudFormation template
+
+`cdk synth`       
+
+## Notes 
 
 The `cdk.json` file tells the CDK Toolkit how to execute your app.
-
-## Useful commands
-
-* `npm run build`   compile typescript to js
-* `npm run watch`   watch for changes and compile
-* `npm run test`    perform the jest unit tests
-* `cdk deploy`      deploy this stack to your default AWS account/region
-* `cdk diff`        compare deployed stack with current state
-* `cdk synth`       emits the synthesized CloudFormation template
