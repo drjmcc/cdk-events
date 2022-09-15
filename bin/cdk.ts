@@ -11,14 +11,14 @@ const app = new cdk.App();
 const createStacks = (config: Config) => {
   new RedirectsInboundEventStack(
     app,
-    `${config.outputPrefix}DevRedirectsInboundEventStack`,
+    `${config.outputPrefix}RedirectsInboundEventStack`,
     {
       env: {
         region: config.awsRegion,
         account: config.awsAccountNumber,
       },
       tags: {
-        Application: "DadRedirects",
+        Application: "Redirects",
         Environment: config.outputPrefix,
       },
       config: config,
@@ -27,14 +27,14 @@ const createStacks = (config: Config) => {
 
   new RedirectsProcessingEventStack(
     app,
-    `${config.outputPrefix}DevRedirectsProcessingEventStack`,
+    `${config.outputPrefix}RedirectsProcessingEventStack`,
     {
       env: {
         region: config.awsRegion,
         account: config.awsAccountNumber,
       },
       tags: {
-        Application: "DadRedirects",
+        Application: "Redirects",
         Environment: config.outputPrefix,
       },
       config: config,

@@ -11,6 +11,15 @@ Install the CDK CLI:
 
 `npm run build`
 
+## List Stacks 
+
+`cdk ls`
+
+## Deploy
+
+`cdk deploy dev`
+
+
 ## Compare a deployed stack with the current state
 
 `cdk diff`        
