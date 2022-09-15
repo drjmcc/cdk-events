@@ -17,7 +17,7 @@ Install the CDK CLI:
 
 ## Deploy
 
-`cdk deploy dev`
+`cdk deploy --require-approval never --exclusively Dev*`
 
 
 ## Compare a deployed stack with the current state
